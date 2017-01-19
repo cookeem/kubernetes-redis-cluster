@@ -16,6 +16,24 @@ Follow this guide: [Install Docker and run hello-world](https://docs.docker.com/
 
 ---
 
+### Clone the git repository
+
+- Clone the git repository and change working directory to ```kubernetes-redis-cluster/```
+
+```sh
+$ git clone https://github.com/cookeem/kubernetes-redis-cluster.git
+Cloning into 'kubernetes-redis-cluster'...
+remote: Counting objects: 17, done.
+remote: Compressing objects: 100% (11/11), done.
+remote: Total 17 (delta 6), reused 17 (delta 6), pack-reused 0
+Unpacking objects: 100% (17/17), done.
+Checking connectivity... done.
+
+$ cd kubernetes-redis-cluster/
+```
+
+---
+
 ### Build the redis cluster image
 
 - Use docker to build redis cluster image
@@ -29,7 +47,7 @@ $ docker build docker-images-redis-ruby/ -t redis:ruby
 Redis service port 7000, but we must enable 17000 port to make create redis cluster work!
 
 ```sh
-$ kubectl create -f redis-cluster/
+$ kubectl create -f .
 service "redis-node1-svc" created
 deployment "redis-node1" created
 service "redis-node2-svc" created
