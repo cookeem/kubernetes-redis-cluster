@@ -142,7 +142,7 @@ M: 460a9f8276f1756953364d61c5b50bcf0a519e2d 172.17.0.10:7000
 Verify the cluster start correct or not
 
 ```sh
-root@redis-node1-2942478609-lqk6j:/data# redis-cli -c -h redis-node1-svc -p 7000
+root@redis-node1-2942478609-lqk6j:/data# redis-cli -c -h redis-2 -p 7000
 redis-node1-svc:7000> set k1 v1
 -> Redirected to slot [12706] located at 172.17.0.10:7000
 OK
