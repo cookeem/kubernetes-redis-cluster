@@ -16,7 +16,7 @@ spec:
       volumes:
         - name: redis-vol
           hostPath: 
-            path: /data/redis-0
+            path: /data/redis-cluster/redis-0
       containers:
       - name: redis-0
         image: redis:ruby
@@ -49,7 +49,7 @@ spec:
       volumes:
         - name: redis-vol
           hostPath: 
-            path: /data/redis-1
+            path: /data/redis-cluster/redis-1
       containers:
       - name: redis-0
         image: redis:ruby
@@ -82,7 +82,7 @@ spec:
       volumes:
         - name: redis-vol
           hostPath: 
-            path: /data/redis-2
+            path: /data/redis-cluster/redis-2
       containers:
       - name: redis-2
         image: redis:ruby
@@ -115,7 +115,7 @@ spec:
       volumes:
         - name: redis-vol
           hostPath: 
-            path: /data/redis-3
+            path: /data/redis-cluster/redis-3
       containers:
       - name: redis-3
         image: redis:ruby
@@ -148,7 +148,7 @@ spec:
       volumes:
         - name: redis-vol
           hostPath: 
-            path: /data/redis-4
+            path: /data/redis-cluster/redis-4
       containers:
       - name: redis-4
         image: redis:ruby
@@ -181,7 +181,7 @@ spec:
       volumes:
         - name: redis-vol
           hostPath: 
-            path: /data/redis-5
+            path: /data/redis-cluster/redis-5
       containers:
       - name: redis-5
         image: redis:ruby
