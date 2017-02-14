@@ -48,44 +48,44 @@ Redis service port 7000, but we must enable 17000 port to make create redis clus
 
 ```sh
 $ kubectl create -f .
-service "redis-node1-svc" created
-deployment "redis-node1" created
-service "redis-node2-svc" created
-deployment "redis-node2" created
-service "redis-node3-svc" created
-deployment "redis-node3" created
-service "redis-node4-svc" created
-deployment "redis-node4" created
-service "redis-node5-svc" created
-deployment "redis-node5" created
-service "redis-node6-svc" created
-deployment "redis-node6" created
+deployment "redis-0" created
+deployment "redis-1" created
+deployment "redis-2" created
+deployment "redis-3" created
+deployment "redis-4" created
+deployment "redis-5" created
+service "redis-0" created
+service "redis-1" created
+service "redis-2" created
+service "redis-3" created
+service "redis-4" created
+service "redis-5" created
 ```
 
 Check the pods:
 
 ```sh
 $ kubectl get pods -l app=redis
-NAME                           READY     STATUS    RESTARTS   AGE
-redis-node1-2942478609-lqk6j   1/1       Running   0          39s
-redis-node2-3398347028-rg8g0   1/1       Running   0          38s
-redis-node3-3854215447-6tsjz   1/1       Running   0          38s
-redis-node4-16099610-rknp9     1/1       Running   0          38s
-redis-node5-471968029-c7hd0    1/1       Running   0          38s
-redis-node6-927836448-d2d0t    1/1       Running   0          37s
+NAME                       READY     STATUS    RESTARTS   AGE
+redis-0-2560206902-b8fvk   1/1       Running   0          6s
+redis-1-2919540793-4pbxm   1/1       Running   0          6s
+redis-2-3476006974-8wtrn   1/1       Running   0          6s
+redis-3-3933907010-4kvnm   1/1       Running   0          6s
+redis-4-97822790-vk3js     1/1       Running   0          5s
+redis-5-555722826-w0vxs    1/1       Running   0          5s
 ```
 
 Use ssh to connect pod container, copy the shell in start-cluster.sh, and run it in container:
 ```sh
 $ kubectl exec -ti redis-node1-2942478609-lqk6j -- /bin/bash
-root@redis-node1-2942478609-lqk6j:/data# echo 'yes' | /root/redis-trib.rb create --replicas 1 \                        
-> `getent hosts redis-node1-svc | awk '{ print $1 }'`:7000 \
-> `getent hosts redis-node2-svc | awk '{ print $1 }'`:7000 \
-> `getent hosts redis-node3-svc | awk '{ print $1 }'`:7000 \
-> `getent hosts redis-node4-svc | awk '{ print $1 }'`:7000 \
-> `getent hosts redis-node5-svc | awk '{ print $1 }'`:7000 \
-> `getent hosts redis-node6-svc | awk '{ print $1 }'`:7000 \
-> `getent hosts redis-node6-svc | awk '{ print $1 }'`:7000
+root@redis-node1-2942478609-lqk6j:/data# echo 'yes' | /root/redis-trib.rb create --replicas 1 \
+> `getent hosts redis-0 | awk '{ print $1 }'`:7000 \
+> `getent hosts redis-1 | awk '{ print $1 }'`:7000 \
+> `getent hosts redis-2 | awk '{ print $1 }'`:7000 \
+> `getent hosts redis-3 | awk '{ print $1 }'`:7000 \
+> `getent hosts redis-4 | awk '{ print $1 }'`:7000 \
+> `getent hosts redis-5 | awk '{ print $1 }'`:7000
+
 >>> Creating cluster
 >>> Performing hash slots allocation on 7 nodes...
 Using 3 masters:
